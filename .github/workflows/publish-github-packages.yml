@@ -1,0 +1,38 @@
+name: Publish Spark 3.5 to GitHub Packages
+
+on:
+  push:
+    tags:
+      - '*-datetime-tz'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+          server-id: github
+          server-username: GITHUB_ACTOR
+          server-password: GITHUB_TOKEN
+
+      - name: Deploy spark-doris-connector-spark-3.5
+        working-directory: spark-doris-connector
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >
+          mvn -B --no-transfer-progress clean deploy
+          -Pspark-3.5
+          -pl spark-doris-connector-spark-3.5
+          -am
+          -Dgpg.skip=true
