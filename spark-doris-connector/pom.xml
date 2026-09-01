@@ -27,10 +27,18 @@
     </parent>
     <groupId>org.apache.doris</groupId>
     <artifactId>spark-doris-connector</artifactId>
-    <version>26.1.0</version>
+    <version>26.1.0-datetime-tz</version>
     <packaging>pom</packaging>
     <name>Spark Doris Connector</name>
     <url>https://doris.apache.org/</url>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/terminal-api/doris-spark-connector</url>
+        </repository>
+    </distributionManagement>
 
     <licenses>
         <license>
@@ -81,7 +89,7 @@
     </mailingLists>
 
     <properties>
-        <revision>26.1.0</revision>
+        <revision>26.1.0-datetime-tz</revision>
         <spark.version>2.4.8</spark.version>
         <spark.major.version>2.4</spark.major.version>
         <scala.version>2.11.12</scala.version>

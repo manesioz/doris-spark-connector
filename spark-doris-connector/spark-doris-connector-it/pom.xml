@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.doris</groupId>
         <artifactId>spark-doris-connector</artifactId>
-        <version>26.1.0</version>
+        <version>26.1.0-datetime-tz</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
