@@ -36,3 +36,4 @@ jobs:
           -pl spark-doris-connector-spark-3.5
           -am
           -Dgpg.skip=true
+          -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/${{ github.repository }}
